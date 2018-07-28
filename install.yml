@@ -1,0 +1,10 @@
+- name: gkeep
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  become: true
+  tasks:
+    - name: "gkeepapi"
+      pip:
+        name: gkeepapi
+        
