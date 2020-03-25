@@ -7,4 +7,4 @@
     - name: "gkeepapi"
       pip:
         name: gkeepapi
-        
+        executable: pip3
