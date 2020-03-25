@@ -2,10 +2,6 @@
 from kalliope.core.NeuronModule import NeuronModule, MissingParameterException
 from kalliope import Utils
 import gkeepapi
-import sys  
-reload(sys)  
-sys.setdefaultencoding('UTF8')
-
 
 class Gkeep(NeuronModule):
     def __init__(self, **kwargs):
