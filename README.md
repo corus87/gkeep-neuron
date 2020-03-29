@@ -145,7 +145,7 @@ It is possible that you can't login with your default password, in this case try
 {% elif ItemsDeleted %} 
     {{ ItemsDeleted }} was deleted from {{ List }}.
 {% elif AllLists %} 
-    You got the following lists {{ AllList }}
+    You got the following lists {{ AllLists }}
 {% elif ItemsInList %} 
     Your lists {{ List }} contains the following items {{ ItemsInList }} 
 {% elif ListNotFound %} 
