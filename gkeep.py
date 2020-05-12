@@ -138,7 +138,7 @@ class Gkeep(NeuronModule):
                 Utils.print_info("Add item %s to list" % item)
                 processed_items.append(item)
 
-        self.keep.sync()
+        self.syncKeep()
         return processed_items
         
         
@@ -172,7 +172,7 @@ class Gkeep(NeuronModule):
                         l.delete()
                         Utils.print_info('[Gnote] Item %s from %s deleted' % (item, list))
                         processed_items.append(item)
-            self.keep.sync()
+            self.syncKeep()
             return processed_items
         else:
             Utils.print_info('[Gnote] List %s not found' % list)
@@ -185,7 +185,7 @@ class Gkeep(NeuronModule):
                 my_list = l    
         if my_list:
             my_list.delete()
-            self.keep.sync()
+            self.syncKeep()
             Utils.print_info('[Gnote] List %s deleted' % list)
             return True
         else:
@@ -208,7 +208,7 @@ class Gkeep(NeuronModule):
                         processed_items.append(item)
                         break
  
-            self.keep.sync()
+            self.syncKeep()
             return processed_items
         else:
             Utils.print_info('[Gnote] List %s not found' % list)
@@ -229,7 +229,7 @@ class Gkeep(NeuronModule):
                         Utils.print_info('[Gnote] Item %s on %s unchecked' % (item.replace("☐ ", ""), list))
                         processed_items.append(item)
             
-            self.keep.sync()
+            self.syncKeep()
             return processed_items
         else:
             Utils.print_info('[Gnote] List %s not found' % list)
@@ -237,8 +237,14 @@ class Gkeep(NeuronModule):
 
     def CreateNote(self, title, text):
         self.keep.createNote(title, text)
-        self.keep.sync()
-
+        self.syncKeep()
+        
+    def syncKeep(self):
+        try:
+            self.keep.sync()
+        except gkeepapi.exception.ParseException:
+            pass
+        
     def _is_parameters_ok(self):
         """
         Check if received parameters are ok to perform operations in the neuron
