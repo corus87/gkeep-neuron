@@ -8,3 +8,4 @@
       pip:
         name: gkeepapi
         executable: pip3
+        state: latest
