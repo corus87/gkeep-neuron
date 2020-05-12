@@ -8,4 +8,4 @@
       pip:
         name: gkeepapi
         executable: pip3
-        state: latest
+        extra_args: --upgrade
